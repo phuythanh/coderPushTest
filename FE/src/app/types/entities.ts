@@ -1,6 +1,6 @@
 export interface IPageWrapperRequest {
   page: number;
-  result: number;
+  size: number;
 }
 
 export interface IPageWrapperResponse<T> {

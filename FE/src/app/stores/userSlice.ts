@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from './store';
-import { fetchUsers } from '../apis/userClient';
+import { fetchUsers, passhOrLikeUser } from '../apis/userClient';
 import { IPageWrapperRequest } from '../types/entities';
 import { UserResponse } from '../types/userEntity';
 
@@ -18,11 +18,16 @@ const initialState: userState = {
 
 export const fetchUsersAsync = createAsyncThunk('user/fetchUsers', async (request: IPageWrapperRequest) => {
   const response = await fetchUsers(request);
-  if (response) {
-    response.totalRecord = 100;
-  }
   return response;
 });
+
+export const passOrLikeUsersAsync = createAsyncThunk(
+  'user/passUsers',
+  async ({ userId, isPassed }: { userId: number; isPassed: boolean }) => {
+    await passhOrLikeUser(userId, isPassed);
+    return userId;
+  }
+);
 
 export const userSlice = createSlice({
   name: 'userSlice',
@@ -37,7 +42,8 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.userList = action.payload.results;
         state.totalRecord = action.payload.totalRecord;
-      });
+      })
+      .addCase(passOrLikeUsersAsync.fulfilled, (state, action) => {});
   },
 });
 
@@ -45,5 +51,6 @@ export const userSlice = createSlice({
 
 export const totalRecordOfUser = (state: RootState) => state.user.totalRecord;
 export const userList = (state: RootState) => state.user.userList;
+export const isLoading = (state: RootState) => state.user.isLoading;
 
 export default userSlice.reducer;

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -11,8 +12,12 @@
     "antd": "^4.18.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-redux": "^7.2.6",
-    "typescript": "^4.1.6"
+    "react-router-dom": "^5.3.0",
+    "react-toastify": "^8.0.3",
+    "typescript": "^4.1.6",
+    "yarn": "^1.22.18"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,6 +31,8 @@
     "@types/react": "^16.14.21",
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.22",
+    "@types/react-router": "^5.1.13",
+    "@types/react-router-dom": "^5.1.7",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.2.1",
@@ -71,5 +78,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000"
 }
