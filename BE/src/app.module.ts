@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
-import { AuthorizationModule } from './authorization/authorization.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entities/user.entity';
@@ -10,7 +9,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
   imports: [
     ConfigModule.forRoot(),
     UserModule,
-    AuthorizationModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

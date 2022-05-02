@@ -26,7 +26,7 @@ export class UserService {
   }
 
   findOne(id: number): Promise<UserEntity> {
-    return this.usersRepository.findOne(id);
+    return this.usersRepository.findOneBy({ id });
   }
 
   async like(myUserId: number, userId: number): Promise<void> {
