@@ -27,7 +27,6 @@
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/swagger": "^5.1.5",
     "@nestjs/typeorm": "^8.0.3",
-    "@types/express-jwt": "^6.0.4",
     "jwks-rsa": "^2.1.0",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",

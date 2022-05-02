@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiBody } from '@nestjs/swagger';
 import { PaginateDto, PaginateRequest } from 'src/types/types';
 import { LikeRequest } from './dto/like-Request';
@@ -19,7 +19,7 @@ export class UserController {
   }
 
   @Get(':userId')
-  async getMyProfile(@Query() userId: number): Promise<UserEntity> {
+  async getMyProfile(@Param('userId') userId: number): Promise<UserEntity> {
     return await this.userService.findOne(userId);
   }
 
