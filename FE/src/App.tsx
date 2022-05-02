@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { HomePage } from './app/pages/HomePage';
 import { Col, Layout, Row } from 'antd';
@@ -24,14 +24,14 @@ function App() {
             }}
           >
             <BrowserRouter>
-              <Route>
-                <div className="lg:container mx-auto">
-                  <ToastContainer />
-                  <div className="flex justify-center">
+              <div className="lg:container mx-auto">
+                <ToastContainer />
+                <div className="flex justify-center">
+                  <Routes>
                     <Route path="/" element={<HomePage />} />
-                  </div>
+                  </Routes>
                 </div>
-              </Route>
+              </div>
             </BrowserRouter>
           </Col>
         </Row>
