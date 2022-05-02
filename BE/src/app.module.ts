@@ -4,7 +4,8 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entities/user.entity';
-import { UserLike } from './entities/userLike.entity';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -19,6 +20,10 @@ import { UserLike } from './entities/userLike.entity';
       database: 'test',
       entities: [UserEntity],
       synchronize: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      exclude: ['/api*'],
     }),
   ],
 })

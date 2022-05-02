@@ -1,5 +1,5 @@
 import { IPageWrapperRequest, IPageWrapperResponse } from '../types/entities';
-import { UserResponse } from '../types/userEntity';
+import { UserDetailResponse, UserResponse } from '../types/userEntity';
 const baseApi = process.env.REACT_APP_BASE_API_URL;
 export async function fetchUsers(request: IPageWrapperRequest): Promise<IPageWrapperResponse<UserResponse>> {
   const response = await fetch(`${baseApi}/user?page=${request.page}&size=${request.size}`);
@@ -12,5 +12,10 @@ export async function passhOrLikeUser(userId: number, isPassed: boolean): Promis
     method: 'POST',
     body: JSON.stringify({ userId }),
   });
+  return await response.json();
+}
+
+export async function fetchUserById(userId: number): Promise<UserDetailResponse> {
+  const response = await fetch(`${baseApi}/user/${userId}`);
   return await response.json();
 }

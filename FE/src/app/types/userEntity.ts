@@ -1,8 +1,11 @@
 export interface UserDto {
   id: number;
   fullName: string;
-  age: number;
   imageUrl: string;
 }
 
 export interface UserResponse extends UserDto {}
+
+export interface UserDetailResponse extends UserDto {
+  age?: number;
+}
